@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置 Student Bean -->
+    <bean id="student" class="com.springioc.entity.Student">
+        <property name="id" value="1"/>
+        <property name="name" value="张三"/>
+        <property name="age" value="66"/>
+        <property name="address" ref="address"/>
+        <property name="hobbies">
+            <list>
+                <ref bean="hobby1"/>
+                <ref bean="hobby2"/>
+                <ref bean="hobby3"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="address" class="com.springioc.entity.Address">
+        <property name="id" value="1"/>
+        <property name="name" value="复兴路"/>
+    </bean>
+
+    <!-- 默认 scope="singleton" 即加载文件就创建对象   -->
+    <!-- scope="prototype" 即用到的时候再加载对象   -->
+    <bean id="hobby1" class="com.springioc.entity.Hobby" scope="prototype">
+        <property name="activity" value="吃饭"/>
+    </bean>
+
+    <bean id="hobby2" class="com.springioc.entity.Hobby" scope="prototype" depends-on="hobby1">
+        <property name="activity" value="睡觉"/>
+    </bean>
+
+    <bean id="hobby3" class="com.springioc.entity.Hobby" scope="prototype">
+        <property name="activity" value="打豆豆"/>
+    </bean>
+
+    <bean id="hobby4" class="com.springioc.entity.Hobby" parent="hobby1">
+
+    </bean>
+</beans>
