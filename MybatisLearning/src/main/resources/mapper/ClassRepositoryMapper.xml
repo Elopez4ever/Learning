@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress CheckTagEmptyBody, SqlShadowingAlias -->
+<mapper namespace="com.test.repository.ClassRepository">
+
+    <resultMap id="classMap" type="com.test.entity.aClass">
+        <id property="id" column="cid"></id>
+        <result property="name" column="cname"></result>
+        <collection property="students" ofType="com.test.entity.Student">
+            <id property="id" column="sid"></id>
+            <result property="name" column="sname"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getById" parameterType="java.lang.Integer" resultMap="classMap">
+        select c.id cid, c.name cname, s.id sid, s.name sname
+        from class c
+        left join student s on c.id = s.cid
+        where c.id = #{id}
+    </select>
+</mapper>
