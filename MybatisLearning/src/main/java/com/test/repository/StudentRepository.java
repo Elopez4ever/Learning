@@ -4,4 +4,5 @@ import com.test.entity.Student;
 
 public interface StudentRepository {
     Student getById(Integer id);
+    Student findById(Integer id);
 }

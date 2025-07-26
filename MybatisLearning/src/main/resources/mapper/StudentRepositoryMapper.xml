@@ -21,4 +21,15 @@
         join class c on s.cid = c.id
         where s.id = #{id}
     </select>
+
+    <resultMap id="lazyMap" type="com.test.entity.Student">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <association property="clazz" column="cid" javaType="com.test.entity.Class"
+                     select="com.test.repository.ClassRepository.findById"></association>
+    </resultMap>
+
+    <select id="findById" resultMap="lazyMap">
+        select * from student where id = #{id}
+    </select>
 </mapper>

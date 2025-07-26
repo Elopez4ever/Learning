@@ -19,5 +19,9 @@
         from class c
         left join student s on c.id = s.cid
         where c.id = #{id}
+     </select>
+
+    <select id="findById" resultType="com.test.entity.aClass">
+        select * from class where id = #{id}
     </select>
 </mapper>

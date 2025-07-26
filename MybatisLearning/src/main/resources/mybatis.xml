@@ -4,6 +4,16 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!--suppress CheckTagEmptyBody -->
 <configuration>
+    
+    <settings>
+        <!-- 打印 SQL 语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!-- 开启懒加载 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 开启二级缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+    
     <environments default="development">
         <environment id="development">
             <!-- 配置 JDBC 事务管理 -->
@@ -18,11 +28,12 @@
         </environment>
     </environments>
 
-    <!-- 注册 UserMapper.xml -->
+    <!-- 注册 xml 文件 -->
     <mappers>
         <mapper resource="mapper/UserMapper.xml"></mapper>
         <mapper resource="mapper/UserRepositoryMapper.xml"></mapper>
         <mapper resource="mapper/StudentRepositoryMapper.xml"></mapper>
         <mapper resource="mapper/ClassRepositoryMapper.xml"></mapper>
+        <mapper resource="mapper/CustomerRepositoryMapper.xml"></mapper>
     </mappers>
 </configuration>

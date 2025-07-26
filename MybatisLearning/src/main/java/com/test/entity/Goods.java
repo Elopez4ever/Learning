@@ -2,9 +2,11 @@ package com.test.entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
-public class Student {
+public class Goods {
     private Integer id;
     private String name;
-    private aClass clazz;
+    private List<Customer> customers;
 }
