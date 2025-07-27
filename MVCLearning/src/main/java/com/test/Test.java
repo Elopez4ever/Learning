@@ -9,5 +9,7 @@ public class Test {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         UserController userController = context.getBean(UserController.class);
         System.out.println(userController.getUserById(1));
+        System.out.println(userController.getUserById(3));
+        System.out.println(userController.getUserById(2));
     }
 }
